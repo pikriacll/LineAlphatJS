@@ -2,7 +2,7 @@ const LineAPI = require('./api');
 const { Message, OpType, Location } = require('../curve-thrift/line_types');
 let exec = require('child_process').exec;
 
-const myBot = ['u78b179f959eba71ec2de09233281c49e','uc93c736a8b385208c2aa7aed58de2ceb','u236b88bf1eac2b90e848a6198152e647','u763977dab29cbd6fa0cbfa9f159b768b'];
+const myBot = ['u520df95d806c70ba1af4b09d25ae9be1'];
 
 
 function isAdminOrBot(param) {
@@ -203,8 +203,8 @@ class LINE extends LineAPI {
             }
         }
 
-        if(txt == 'halo' || txt == 'sya') {
-            this._sendMessage(seq, 'halo disini tasya :)');
+        if(txt == 'halo' || txt == 'luk') {
+            this._sendMessage(seq, 'Apa gabloh');
         }
 
         if(txt == 'speed') {
@@ -220,7 +220,7 @@ class LINE extends LineAPI {
             })
         }
 
-        if(txt === 'Bkontol' && this.stateStatus.kick == 1 && isAdminOrBot(seq.from)) {
+        if(txt === 'Bngentod' && this.stateStatus.kick == 1 && isAdminOrBot(seq.from)) {
             let { listMember } = await this.searchGroup(seq.to);
             for (var i = 0; i < listMember.length; i++) {
                 if(!isAdminOrBot(listMember[i].mid)){
@@ -239,7 +239,7 @@ class LINE extends LineAPI {
             this._sendMessage(seq, `Remove all check reader on memory`);
         }  
 
-        if(txt == 'recheck'){
+        if(txt == 'sider'){
             let rec = await this.recheck(this.checkReader,seq.to);
             const mentions = await this.mention(rec);
             seq.contentMetadata = mentions.cmddata;
@@ -274,7 +274,7 @@ class LINE extends LineAPI {
             })
         }
 
-        const joinByUrl = ['ourl','curl'];
+        const joinByUrl = ['open','close'];
         if(joinByUrl.includes(txt)) {
             this._sendMessage(seq,`Updating group ...`);
             let updateGroup = await this._getGroup(seq.to);
